@@ -1,0 +1,11 @@
+Pour que l'application fonctionne sur un autre système que Seven, 
+il faut lancer visual studio en mode administrateur.
+
+formulaire de création des comptes :
+
+login : admin
+mdp : admin
+
+Problème :
+
+- l'opération de synchronisation ferme le formulaire adzForm
