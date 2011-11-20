@@ -475,16 +475,16 @@ Public Class adzForm
 
     End Sub
 
-    'Private Sub adzForm_FormClosing(ByVal sender As Object, _
-    '                                   ByVal e As System.Windows.Forms.FormClosingEventArgs) _
-    '                                   Handles Me.FormClosing
+    Private Sub adzForm_FormClosing(ByVal sender As Object, _
+                                       ByVal e As System.Windows.Forms.FormClosingEventArgs) _
+                                       Handles Me.FormClosing
 
-    '    ' On supprime les fichiers.
-    '    System.IO.File.Delete(mstrCheminHostsPur)
-    '    System.IO.File.Delete(mstrCheminHostsServeur)
-    '    System.IO.File.Delete(mstrCheminHostsTemp)
+        ' On supprime les fichiers.
+        System.IO.File.Delete(mstrCheminHostsPur)
+        System.IO.File.Delete(mstrCheminHostsServeur)
+        System.IO.File.Delete(mstrCheminHostsTemp)
 
-    'End Sub
+    End Sub
 
     Private Sub QuitterButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
                                         Handles QuitterButton.Click, QuitterToolStripMenuItem.Click
