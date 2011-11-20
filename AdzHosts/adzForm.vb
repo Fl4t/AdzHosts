@@ -205,7 +205,7 @@ Public Class adzForm
         Dim vf_strVersion As String
 
         ' variable de type chaîne contenant la ligne en cours d'analyse.
-        Dim vf_strLigneEnCours As String
+        Dim vf_strLigneEnCours As String = ""
 
         ' Une erreur si le fichier fait moins de 2 lignes, donc on test avant.
         Try
