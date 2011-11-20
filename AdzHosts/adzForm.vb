@@ -110,10 +110,11 @@ Public Class adzForm
 
             ' Si il n'existe pas de fichier locale.
         Else
-            DialogResult = MessageBox.Show("Fichier non trouvé dans l'emplacement " & mstrCheminHostsLocale & _
+            Dim dlgReponse As DialogResult
+            dlgReponse = MessageBox.Show("Fichier non trouvé dans l'emplacement " & mstrCheminHostsLocale & _
                                                        ", voulez-vous y placer le fichier hosts téléchargé ?", _
                                                        "AdZHosts Updater", MessageBoxButtons.YesNo, MessageBoxIcon.Error)
-            If DialogResult = Windows.Forms.DialogResult.Yes Then
+            If dlgReponse = Windows.Forms.DialogResult.Yes Then
                 ' On purifie le fichier avant de le copier.
                 Call P_Purification()
 
@@ -294,10 +295,11 @@ Public Class adzForm
     Private Sub SyncButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
     Handles SyncButton.Click
         ' Message de confirmation.
-        DialogResult = MessageBox.Show("Etes-vous sur le vouloir procéder à la mise à jour ?", _
+        Dim dlgReponse As DialogResult
+        dlgReponse = MessageBox.Show("Etes-vous sur le vouloir procéder à la mise à jour ?", _
                                        "AdZHosts Updater", MessageBoxButtons.YesNo, _
                                        MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button2)
-        If DialogResult = Windows.Forms.DialogResult.Yes Then
+        If dlgReponse = Windows.Forms.DialogResult.Yes Then
 
             ' Appel de la procédure de purification avant le remplacement du fichier dans la machine locale.
             Call P_Purification()
@@ -321,10 +323,11 @@ Public Class adzForm
     Private Sub MiseAZeroToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
                                                 Handles MiseAZeroToolStripMenuItem.Click
         ' On demande une confirmation.
-        DialogResult = MessageBox.Show("Etes-vous sur de vouloir remettre à zero le fichier hosts ?", _
+        Dim dlgReponse As DialogResult
+        dlgReponse = MessageBox.Show("Etes-vous sur de vouloir remettre à zero le fichier hosts ?", _
                                        "AdZHosts Updater", MessageBoxButtons.YesNo, MessageBoxIcon.Question, _
                                        MessageBoxDefaultButton.Button2)
-        If DialogResult = Windows.Forms.DialogResult.Yes Then
+        If dlgReponse = Windows.Forms.DialogResult.Yes Then
 
             ' On déclare une variable représentant le chemin du fichier hostsdefaut.txt
             Dim strCheminHostsDefaut As String = Application.StartupPath & "\hostsDefaut.txt"
