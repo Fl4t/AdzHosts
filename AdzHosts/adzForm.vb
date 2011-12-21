@@ -45,25 +45,22 @@ Public Class adzForm
     ' Représente la version du fichier locale analysé par la fonction de vérification de version
     Private mstrVersionLocale As String
 
-    Private Sub adzForm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
+    Private Sub adzForm_Load(ByVal sender As System.Object,
+                             ByVal e As System.EventArgs) _
+                             Handles MyBase.Load
         ' Au démarrage de l'application, on télécharge le fichier hosts à l'endroit où
         ' est l'executif.
 
         ' Essai du téléchargement, on ne sait jamais ce qui peut arriver.
         Try
-
-            My.Computer.Network.DownloadFile("http://kosvocore.free.fr/AdZHosts/HOSTS.txt", _
+            My.Computer.Network.DownloadFile("http://kosvocore.free.fr/AdZHosts/HOSTS", _
                                              mstrCheminHostsServeur, "", "", True, 10, True)
-
             ' Création du répertoire de sauvegardes.
             If System.IO.Directory.Exists(mstrCheminSauvegardes) = False Then
                 System.IO.Directory.CreateDirectory(mstrCheminSauvegardes)
             End If
-
             ' On sauvegarde le fichier locale.
             Call P_SauvegardeHostsLocale()
-
             ' On analyse la version serveur.
             Call P_AnalyseDeVersion(mstrCheminHostsServeur)
             ' On analyse la version locale.
@@ -71,32 +68,26 @@ Public Class adzForm
 
             ' On affiche les versions.
             Call P_AffichageDesVersions()
-
         Catch ex As Exception
-
             ' Si problème, on informe puis on bloque l'application.
             MessageBox.Show("Problème lors du téléchargement, vérifiez que votre connexion " & _
                             "internet fonctionne et assurez-vous que le fichier hosts est " & _
-                            "distribué à l'adresse suivante : http://kosvocore.free.fr/AdZHosts/HOSTS.txt ", _
+                            "distribué à l'adresse suivante : http://kosvocore.free.fr/AdZHosts/HOSTS ", _
                             "AdZHosts Updater", MessageBoxButtons.OK, _
                             MessageBoxIcon.Information)
             SyncButton.Enabled = False
             MiseAZeroToolStripMenuItem.Enabled = False
             AjoutDeDomainesToolStripMenuItem.Enabled = False
             SuppressionDeDomainesToolStripMenuItem.Enabled = False
-
         End Try
-
     End Sub
 
     Private Sub P_SauvegardeHostsLocale()
-
         ' Sauvegarde du fichier hosts locale au lancement de l'application.
 
         ' On vérifie si le fichier existe.
         Dim pp_boolExiste As Boolean = System.IO.File.Exists(mstrCheminHostsLocale)
         If pp_boolExiste Then
-
             ' On déclare un compteur pour sauvegarder de façon incrémenté.
             Dim vp_intCompteur As Integer = 1
 
@@ -104,10 +95,8 @@ Public Class adzForm
             While System.IO.File.Exists(mstrCheminSauvegardes & "\hostsSav" & vp_intCompteur)
                 vp_intCompteur += 1
             End While
-
             ' On enregistre à la suite des sauvegardes.
             System.IO.File.Copy(mstrCheminHostsLocale, mstrCheminSauvegardes & "\hostsSav" & vp_intCompteur)
-
             ' Si il n'existe pas de fichier locale.
         Else
             Dim dlgReponse As DialogResult
@@ -124,52 +113,42 @@ Public Class adzForm
                 ' On informe l'utilisateur de la reussite de l'opération.
                 MessageBox.Show("Mise en place du fichier réussi !", "AdZHosts Updater", MessageBoxButtons.OK, _
                                                                                     MessageBoxIcon.Information)
-
                 ' Puis la procédure ce rapelle-elle même pour forcément faire la copie et la sauvegarde.
                 Call P_SauvegardeHostsLocale()
-
             End If
         End If
-
     End Sub
 
     Private Sub P_AnalyseDeVersion(ByVal pp_strCheminHosts As String)
-
         ' Cette procédure ouvre un fichier par rapport au chemin  mis en paramètre puis apelle 
         ' la fonction de vérification de version. Le but ici est de ne pas répéter le 
         ' code pour le load du formulaire et pour le code de la procédure évenementielle 
         ' click du menu AnalyserLesVersionsToolStripMenuItem.
 
-        ' Si le chemain qui est donnée en parramètre est le chemain du fichier téléchargé alors.
+        ' Si le chemin qui est donné en paramètre est le chemin du fichier téléchargé.
         If pp_strCheminHosts = mstrCheminHostsServeur Then
-
             ' On ouvre le fichier serveur, on extrait la version puis on le ferme.
             Dim vp_objFichierHostsServeur As System.IO.StreamReader
             vp_objFichierHostsServeur = System.IO.File.OpenText(pp_strCheminHosts)
             mstrVersionServeur = F_VerifierVersion(vp_objFichierHostsServeur)
             vp_objFichierHostsServeur.Close()
-
-            ' Sinon c'est que c'est le chemain du fichier locale.
+            ' Sinon c'est que c'est le chemin du fichier local.
         Else
-
             ' On ouvre le fichier local, on extrait la version puis on le ferme.
             Dim vp_objFichierHostsLocale As System.IO.StreamReader
             vp_objFichierHostsLocale = System.IO.File.OpenText(mstrCheminHostsLocale)
             mstrVersionLocale = F_VerifierVersion(vp_objFichierHostsLocale)
             vp_objFichierHostsLocale.Close()
-
         End If
-
     End Sub
 
     Private Sub P_AffichageDesVersions()
-
         ' Colorisations des versions.
         Select Case mstrVersionLocale.CompareTo(mstrVersionServeur)
-            Case Is > 0
+            Case Is < 0
                 ServeurLabel.ForeColor = Color.Green
                 LocaleLabel.ForeColor = Color.Red
-            Case Is < 0
+            Case Is > 0
                 ServeurLabel.ForeColor = Color.Red
                 LocaleLabel.ForeColor = Color.Green
             Case Else
@@ -183,7 +162,7 @@ Public Class adzForm
         ' On fait apparaître la version serveur.
         ServeurLabel.Text = mstrVersionServeur
 
-        ' Si la version du fichier hosts est inconnue, il y a un problème.
+        ' Si la version du fichier hosts est inconnu, il y a un problème.
         If mstrVersionServeur = "Inconnu" Then
             MessageBox.Show("Le fichier ne contient pas la chaine '# AdZHosts...'," & _
                         " il est possible que le fichier soit corrompu ou que le mainteneur " & _
@@ -193,18 +172,13 @@ Public Class adzForm
                         MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1)
             SyncButton.Enabled = False
         End If
-
     End Sub
 
     Private Function F_VerifierVersion(ByRef pf_objFichierHosts As System.IO.StreamReader) As String
-
         ' Cette fonction extrait une chaîne du fichier placée en paramètre représentant le numero de version
         ' sur 4 caractères. On envoie un fichier par valeur car le fichier peut être volumineux.
 
-        ' variable de type chaîne contenant une éventuelle version.
         Dim vf_strVersion As String
-
-        ' variable de type chaîne contenant la ligne en cours d'analyse.
         Dim vf_strLigneEnCours As String = ""
 
         ' Une erreur si le fichier fait moins de 2 lignes, donc on test avant.
@@ -229,11 +203,9 @@ Public Class adzForm
         End Try
 
         Return vf_strVersion
-
     End Function
 
     Private Sub P_Purification()
-
         ' Cette procédure consiste à analyser ligne par ligne le fichier hosts pour en vérifier sa conformité.
         ' En effet, dans le cas de piratage du fichier, une personne mal intentionnée pourrait y déposer des 
         ' lignes redirigeant vers des adresses ip différentes que "localhost" et donc, rediriger le site 
@@ -248,7 +220,7 @@ Public Class adzForm
         Dim vp_objFichierHostsServeurPur As System.IO.StreamWriter
         vp_objFichierHostsServeurPur = System.IO.File.CreateText(mstrCheminHostsPur)
 
-        ' On déclare un tableau de chaîne qui contient les lignes qui n'ont pas été ajouté
+        ' On déclare un tableau de chaîne qui contiendra les lignes qui n'ont pas été ajouté
         ' avec une variable pour incrémenter le tableau et une autre qui représente la longueur totale
         ' du tableau.
         Dim vp_strLignesExclus() As String = {""}
@@ -289,18 +261,17 @@ Public Class adzForm
             MsgBox("Les lignes suivantes n'ont pas été inscrites : " & vbNewLine & vbNewLine & vp_strLigne, _
                     MsgBoxStyle.OkOnly, "AdZHosts Updater")
         End If
-
     End Sub
 
-    Private Sub SyncButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
-    Handles SyncButton.Click
+    Private Sub SyncButton_Click(ByVal sender As System.Object,
+                                 ByVal e As System.EventArgs) _
+                                 Handles SyncButton.Click
         ' Message de confirmation.
         Dim dlgReponse As DialogResult
         dlgReponse = MessageBox.Show("Etes-vous sur le vouloir procéder à la mise à jour ?", _
                                        "AdZHosts Updater", MessageBoxButtons.YesNo, _
                                        MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button2)
         If dlgReponse = Windows.Forms.DialogResult.Yes Then
-
             ' Appel de la procédure de purification avant le remplacement du fichier dans la machine locale.
             Call P_Purification()
 
@@ -313,22 +284,21 @@ Public Class adzForm
             Call P_AnalyseDeVersion(mstrCheminHostsLocale)
             ' On apelle l'affichage des versions.
             Call P_AffichageDesVersions()
-
         Else
             MessageBox.Show("Mise à jour interrompue.", "AdZHosts Updater", MessageBoxButtons.OK, _
                             MessageBoxIcon.Information)
         End If
     End Sub
 
-    Private Sub MiseAZeroToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
-                                                Handles MiseAZeroToolStripMenuItem.Click
+    Private Sub MiseAZeroToolStripMenuItem_Click(ByVal sender As System.Object,
+                                                 ByVal e As System.EventArgs) _
+                                                 Handles MiseAZeroToolStripMenuItem.Click
         ' On demande une confirmation.
         Dim dlgReponse As DialogResult
         dlgReponse = MessageBox.Show("Etes-vous sur de vouloir remettre à zero le fichier hosts ?", _
                                        "AdZHosts Updater", MessageBoxButtons.YesNo, MessageBoxIcon.Question, _
                                        MessageBoxDefaultButton.Button2)
         If dlgReponse = Windows.Forms.DialogResult.Yes Then
-
             ' On déclare une variable représentant le chemin du fichier hostsdefaut.txt
             Dim strCheminHostsDefaut As String = Application.StartupPath & "\hostsDefaut.txt"
             Dim objFichierHostsDefaut As System.IO.StreamWriter
@@ -358,15 +328,12 @@ Public Class adzForm
             Call P_AnalyseDeVersion(mstrCheminHostsLocale)
             ' On appelle l'affichage des versions.
             Call P_AffichageDesVersions()
-
         End If
-
     End Sub
 
     Private Sub AjoutDeDomainesToolStripMenuItem_Click(ByVal sender As System.Object, _
                                                        ByVal e As System.EventArgs) _
                                                        Handles AjoutDeDomainesToolStripMenuItem.Click
-
         ' Procédure évenementielle d'ajout de nom de domaine.
         ' On demande le nom de domaine à ajouter.
         Dim strDomaineAjout As String = InputBox("Si votre ajout est susceptible d'intéresser la communauté" _
@@ -375,7 +342,6 @@ Public Class adzForm
                                                  "Adresse : http://adzhosts.free.fr/forum/", _
                                                  "AdZHosts Updater", "domaine.com")
         If strDomaineAjout <> "" AndAlso strDomaineAjout <> "domaine.com" Then
-
             ' On fait une sauvegarde à chaque opération sur le fichier.
             Call P_SauvegardeHostsLocale()
 
@@ -393,17 +359,15 @@ Public Class adzForm
             MessageBox.Show("Ajout reussi !", "AdZHosts Updater", MessageBoxButtons.OK, _
                             MessageBoxIcon.Information)
         Else
-
             ' On informe que l'ajout a été interrompue.
             MessageBox.Show("Vous n'avez pas saisi de nom de domaine !", "AdZHosts Updater", MessageBoxButtons.OK, _
                             MessageBoxIcon.Information)
         End If
-
     End Sub
 
-    Private Sub SuppressionDeDomainesToolStripMenuItem_Click(ByVal sender As System.Object, _
-    ByVal e As System.EventArgs) Handles SuppressionDeDomainesToolStripMenuItem.Click
-
+    Private Sub SuppressionDeDomainesToolStripMenuItem_Click(ByVal sender As System.Object,
+                                                             ByVal e As System.EventArgs) _
+                                                             Handles SuppressionDeDomainesToolStripMenuItem.Click
         ' Procédure évenementielle de suppression de nom de domaine.
         ' On demande le nom de domaine à enlever.
         Dim strDomaineASuppr As String = InputBox("Si votre suppression est susceptible d'intéresser " & _
@@ -412,7 +376,6 @@ Public Class adzForm
                                                   "Adresse : http://adzhosts.free.fr/forum/", _
                                                   "AdZHosts Updater", "domaine.com")
         If strDomaineASuppr <> "" AndAlso strDomaineASuppr <> "domaine.com" Then
-
             ' On fait une sauvegarde à chaque changement du fichier.
             Call P_SauvegardeHostsLocale()
 
@@ -430,8 +393,6 @@ Public Class adzForm
             ' Booléen indiquant si on a trouver le domaine
             Dim boolTrouve As Boolean = False
             While objFichierHostsLocale.Peek <> -1
-
-                ' Je reprends la variable locale strLigneEnCours qui n'est plus utilisé.
                 Dim strLigneEnCours As String = objFichierHostsLocale.ReadLine()
 
                 ' Recherche du domaine dans la ligne en cours.
@@ -456,49 +417,42 @@ Public Class adzForm
             ' On copie le fichier temporaire puis on le colle à l'emplacement du fichier hosts.
             System.IO.File.Copy(mstrCheminHostsTemp, mstrCheminHostsLocale, True)
             If boolTrouve Then
-
                 ' On informe que la suppréssion a reussi.
                 MessageBox.Show("Suppression reussi !", "AdZHosts Updater", MessageBoxButtons.OK, _
                                 MessageBoxIcon.Information)
             Else
-
                 ' On informe que le domaine n'a pas été trouvé.
                 MessageBox.Show("Domaine proposé non trouvé, vérifiez votre synthaxe.", _
                                 "AdZHosts Updater", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
         Else
-
             ' On informe que la suppréssion a été intérrompu.
             MessageBox.Show("Vous n'avez pas saisi de nom de domaine !", "AdZHosts Updater", MessageBoxButtons.OK, _
                             MessageBoxIcon.Information)
         End If
-
     End Sub
 
-    Private Sub adzForm_FormClosing(ByVal sender As Object, _
-                                       ByVal e As System.Windows.Forms.FormClosingEventArgs) _
-                                       Handles Me.FormClosing
-
+    Private Sub adzForm_FormClosing(ByVal sender As Object,
+                                    ByVal e As System.Windows.Forms.FormClosingEventArgs) _
+                                    Handles Me.FormClosing
         ' On supprime les fichiers.
         System.IO.File.Delete(mstrCheminHostsPur)
         System.IO.File.Delete(mstrCheminHostsServeur)
         System.IO.File.Delete(mstrCheminHostsTemp)
-
     End Sub
 
-    Private Sub QuitterButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
-                                        Handles QuitterButton.Click, QuitterToolStripMenuItem.Click
+    Private Sub QuitterButton_Click(ByVal sender As System.Object,
+                                    ByVal e As System.EventArgs) _
+                                    Handles QuitterButton.Click, QuitterToolStripMenuItem.Click
         Me.Close()
-
     End Sub
 
-    Private Sub AProposToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
-                                                Handles AProposToolStripMenuItem.Click
-
+    Private Sub AProposToolStripMenuItem_Click(ByVal sender As System.Object,
+                                               ByVal e As System.EventArgs) _
+                                               Handles AProposToolStripMenuItem.Click
         ' On affiche le formulaire A propos.
         Dim objaproposForm As New aproposForm
         objaproposForm.ShowDialog()
-
     End Sub
 
 End Class
