@@ -145,10 +145,10 @@ Public Class adzForm
     Private Sub P_AffichageDesVersions()
         ' Colorisations des versions.
         Select Case mstrVersionLocale.CompareTo(mstrVersionServeur)
-            Case Is > 0
+            Case Is < 0
                 ServeurLabel.ForeColor = Color.Green
                 LocaleLabel.ForeColor = Color.Red
-            Case Is < 0
+            Case Is > 0
                 ServeurLabel.ForeColor = Color.Red
                 LocaleLabel.ForeColor = Color.Green
             Case Else
