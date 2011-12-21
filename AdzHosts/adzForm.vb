@@ -53,7 +53,7 @@ Public Class adzForm
 
         ' Essai du téléchargement, on ne sait jamais ce qui peut arriver.
         Try
-            My.Computer.Network.DownloadFile("http://kosvocore.free.fr/AdZHosts/HOSTS.txt", _
+            My.Computer.Network.DownloadFile("http://kosvocore.free.fr/AdZHosts/HOSTS", _
                                              mstrCheminHostsServeur, "", "", True, 10, True)
             ' Création du répertoire de sauvegardes.
             If System.IO.Directory.Exists(mstrCheminSauvegardes) = False Then
@@ -72,7 +72,7 @@ Public Class adzForm
             ' Si problème, on informe puis on bloque l'application.
             MessageBox.Show("Problème lors du téléchargement, vérifiez que votre connexion " & _
                             "internet fonctionne et assurez-vous que le fichier hosts est " & _
-                            "distribué à l'adresse suivante : http://kosvocore.free.fr/AdZHosts/HOSTS.txt ", _
+                            "distribué à l'adresse suivante : http://kosvocore.free.fr/AdZHosts/HOSTS ", _
                             "AdZHosts Updater", MessageBoxButtons.OK, _
                             MessageBoxIcon.Information)
             SyncButton.Enabled = False
