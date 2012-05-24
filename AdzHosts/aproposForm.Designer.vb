@@ -23,18 +23,18 @@ Partial Class aproposForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(aproposForm))
-        Me.adzPictureBox = New System.Windows.Forms.PictureBox
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.Label7 = New System.Windows.Forms.Label
-        Me.Label9 = New System.Windows.Forms.Label
-        Me.Label10 = New System.Windows.Forms.Label
-        Me.ForumLinkLabel = New System.Windows.Forms.LinkLabel
-        Me.SiteLinkLabel = New System.Windows.Forms.LinkLabel
-        Me.Label6 = New System.Windows.Forms.Label
+        Me.adzPictureBox = New System.Windows.Forms.PictureBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.ForumLinkLabel = New System.Windows.Forms.LinkLabel()
+        Me.SiteLinkLabel = New System.Windows.Forms.LinkLabel()
+        Me.Label6 = New System.Windows.Forms.Label()
         CType(Me.adzPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -82,9 +82,9 @@ Partial Class aproposForm
         Me.Label4.AutoSize = True
         Me.Label4.Location = New System.Drawing.Point(143, 136)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(65, 13)
+        Me.Label4.Size = New System.Drawing.Size(72, 13)
         Me.Label4.TabIndex = 4
-        Me.Label4.Text = "Alden Magix"
+        Me.Label4.Text = "Hajdar Kakud"
         '
         'Label5
         '
@@ -122,8 +122,8 @@ Partial Class aproposForm
         Me.Label10.Size = New System.Drawing.Size(288, 55)
         Me.Label10.TabIndex = 10
         Me.Label10.Text = "AdZHosts Updater est un modeste logiciel de mise à  jour du fichier hosts. Ce log" & _
-            "iciel est conçu pour le fichier d'Alden Magix et donc fait office de bloqueurs d" & _
-            "e publicités sur internet."
+            "iciel est conçu pour le fichier d'Hajdar Kakud et donc fait office de bloqueurs " & _
+            "de publicités sur internet."
         Me.Label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'ForumLinkLabel
@@ -153,7 +153,7 @@ Partial Class aproposForm
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(171, 13)
         Me.Label6.TabIndex = 13
-        Me.Label6.Text = "Copyright (c) 2011 Stechele Julien."
+        Me.Label6.Text = "Copyright (c) 2012 Stechele Julien."
         '
         'aproposForm
         '
@@ -178,7 +178,7 @@ Partial Class aproposForm
         Me.MinimizeBox = False
         Me.Name = "aproposForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "AdZHosts Updater v0.1 "
+        Me.Text = "AdZHosts Updater v1.1 "
         CType(Me.adzPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()

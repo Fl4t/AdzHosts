@@ -1,4 +1,4 @@
-AdzHosts/bin/*
+AdzHosts/bin/
+!AdzHosts/bin/Release/*.exe
 AdzHosts/obj/*
-!AdzHosts/bin/Debug/AdzHosts Updater.exe
 AdzHosts.suo

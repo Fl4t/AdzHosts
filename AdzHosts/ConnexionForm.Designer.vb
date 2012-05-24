@@ -23,13 +23,13 @@ Partial Class ConnexionForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ConnexionForm))
-        Me.ConnexionButton = New System.Windows.Forms.Button
-        Me.MdpLabel = New System.Windows.Forms.Label
-        Me.LoginLabel = New System.Windows.Forms.Label
-        Me.MdpTextBox = New System.Windows.Forms.TextBox
-        Me.LoginTextBox = New System.Windows.Forms.TextBox
-        Me.ErreurMdpLabel = New System.Windows.Forms.Label
-        Me.ErreurLoginLabel = New System.Windows.Forms.Label
+        Me.ConnexionButton = New System.Windows.Forms.Button()
+        Me.MdpLabel = New System.Windows.Forms.Label()
+        Me.LoginLabel = New System.Windows.Forms.Label()
+        Me.MdpTextBox = New System.Windows.Forms.TextBox()
+        Me.LoginTextBox = New System.Windows.Forms.TextBox()
+        Me.ErreurMdpLabel = New System.Windows.Forms.Label()
+        Me.ErreurLoginLabel = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'ConnexionButton
@@ -113,7 +113,7 @@ Partial Class ConnexionForm
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "ConnexionForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "AdZHosts Updater v0.1"
+        Me.Text = "AdZHosts Updater v1.1"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
