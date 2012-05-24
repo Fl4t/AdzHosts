@@ -113,7 +113,7 @@ Partial Class ConnexionForm
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "ConnexionForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "AdZHosts Updater v1.1"
+        Me.Text = "AdZHosts Updater v1.11"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
