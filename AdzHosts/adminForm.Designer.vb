@@ -115,7 +115,7 @@ Partial Class adminForm
         Me.MinimizeBox = False
         Me.Name = "adminForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "AdZHosts Updater v1.1"
+        Me.Text = "AdZHosts Updater v1.11"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
