@@ -1,5 +1,4 @@
-﻿
-' Copyright (c) 2011 Stechele Julien
+﻿' Copyright (c) 2011 Stechele Julien
 ' All rights reserved.
 
 ' Redistribution and use in source and binary forms, with or without modification, are permitted provided 
