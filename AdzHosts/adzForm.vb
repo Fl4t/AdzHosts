@@ -107,11 +107,12 @@ Public Class adzForm
                 Call P_Purification()
 
                 ' On copie le fichier purifié pour le mettre à l'emplacement prévu.
-                System.IO.File.Copy(mstrCheminHostsPur, mstrCheminHostsLocale)
+                If F_RemplacerHostLocal(mstrCheminHostsPur, mstrCheminHostsLocale) Then
+                    ' On informe l'utilisateur de la reussite de l'opération.
+                    MessageBox.Show("Mise en place du fichier réussi !", "AdZHosts Updater", MessageBoxButtons.OK, _
+                                                                                        MessageBoxIcon.Information)
+                End If
 
-                ' On informe l'utilisateur de la reussite de l'opération.
-                MessageBox.Show("Mise en place du fichier réussi !", "AdZHosts Updater", MessageBoxButtons.OK, _
-                                                                                    MessageBoxIcon.Information)
                 ' Puis la procédure ce rapelle-elle même pour forcément faire la copie et la sauvegarde.
                 Call P_SauvegardeHostsLocale()
             End If
@@ -262,6 +263,38 @@ Public Class adzForm
         End If
     End Sub
 
+    Private Sub P_EnleverLectureSeule()
+
+        Dim acces As FileAttribute = System.IO.File.GetAttributes(mstrCheminHostsLocale)
+
+        If (acces And FileAttribute.ReadOnly) = FileAttribute.ReadOnly Then
+            System.IO.File.SetAttributes(mstrCheminHostsLocale, acces And Not FileAttribute.ReadOnly)
+        End If
+
+        acces = System.IO.File.GetAttributes(mstrCheminHostsLocale)
+
+    End Sub
+
+    Private Function F_RemplacerHostLocal(ByRef pf_strCheminHostsNouveau As String, _
+                                     ByVal pf_strCheminHostsAncien As String) As Boolean
+
+        Dim retour As Boolean = False
+
+        Try
+            System.IO.File.Copy(pf_strCheminHostsNouveau, pf_strCheminHostsAncien, True)
+            retour = True
+        Catch ex As UnauthorizedAccessException
+            MessageBox.Show("Vous n'avez pas les autorisations nécessaires pour modifier le " _
+                            & "fichier hosts de l'ordinateur. Assurez-vous d'avoir les accès " _
+                            & "administrateurs et d'avoir désactiver le service UAC de Windows.",
+                            "Accès refusé", MessageBoxButtons.OK, MessageBoxIcon.Error _
+                            , MessageBoxDefaultButton.Button1)
+        End Try
+
+        Return retour
+
+    End Function
+
     Private Sub SyncButton_Click(ByVal sender As System.Object,
                                  ByVal e As System.EventArgs) _
                                  Handles SyncButton.Click
@@ -274,15 +307,20 @@ Public Class adzForm
             ' Appel de la procédure de purification avant le remplacement du fichier dans la machine locale.
             Call P_Purification()
 
+            ' Appel de la procédure de modification d'attribut du fichier host local.
+            Call P_EnleverLectureSeule()
+
             ' Remplacement du fichier local par le fichier purifié.
-            System.IO.File.Copy(mstrCheminHostsPur, mstrCheminHostsLocale, True)
-            MessageBox.Show("Mise à jour réussie !", "AdZHosts Updater", MessageBoxButtons.OK, _
+            If F_RemplacerHostLocal(mstrCheminHostsPur, mstrCheminHostsLocale) Then
+                MessageBox.Show("Mise à jour réussie !", "AdZHosts Updater", MessageBoxButtons.OK, _
                             MessageBoxIcon.Information)
 
-            ' On analyse la version locale.
-            Call P_AnalyseDeVersion(mstrCheminHostsLocale)
-            ' On apelle l'affichage des versions.
-            Call P_AffichageDesVersions()
+                ' On analyse la version locale.
+                Call P_AnalyseDeVersion(mstrCheminHostsLocale)
+                ' On apelle l'affichage des versions.
+                Call P_AffichageDesVersions()
+            End If
+
         Else
             MessageBox.Show("Mise à jour interrompue.", "AdZHosts Updater", MessageBoxButtons.OK, _
                             MessageBoxIcon.Information)
@@ -313,20 +351,24 @@ Public Class adzForm
             ' On ferme le fichier
             objFichierHostsDefaut.Close()
 
+            ' Appel de la procédure de modification d'attribut du fichier host local.
+            Call P_EnleverLectureSeule()
+
             ' On le copie à l'emplacement prévu.
-            System.IO.File.Copy(strCheminHostsDefaut, mstrCheminHostsLocale, True)
+            If F_RemplacerHostLocal(strCheminHostsDefaut, mstrCheminHostsLocale) Then
+                ' On supprime le fichier.
+                System.IO.File.Delete(strCheminHostsDefaut)
 
-            ' On supprime le fichier.
-            System.IO.File.Delete(strCheminHostsDefaut)
+                ' On informe.
+                MessageBox.Show("Mise à zéro éffectuée !", "AdZHosts Updater", MessageBoxButtons.OK, _
+                                MessageBoxIcon.Information)
 
-            ' On informe.
-            MessageBox.Show("Mise à zéro éffectuée !", "AdZHosts Updater", MessageBoxButtons.OK, _
-                            MessageBoxIcon.Information)
+                ' On apelle l'analyse des versions.
+                Call P_AnalyseDeVersion(mstrCheminHostsLocale)
+                ' On appelle l'affichage des versions.
+                Call P_AffichageDesVersions()
+            End If
 
-            ' On apelle l'analyse des versions.
-            Call P_AnalyseDeVersion(mstrCheminHostsLocale)
-            ' On appelle l'affichage des versions.
-            Call P_AffichageDesVersions()
         End If
     End Sub
 
@@ -414,16 +456,18 @@ Public Class adzForm
             objFichierHostsTemp.Close()
 
             ' On copie le fichier temporaire puis on le colle à l'emplacement du fichier hosts.
-            System.IO.File.Copy(mstrCheminHostsTemp, mstrCheminHostsLocale, True)
-            If boolTrouve Then
-                ' On informe que la suppréssion a reussi.
-                MessageBox.Show("Suppression reussi !", "AdZHosts Updater", MessageBoxButtons.OK, _
-                                MessageBoxIcon.Information)
-            Else
-                ' On informe que le domaine n'a pas été trouvé.
-                MessageBox.Show("Domaine proposé non trouvé, vérifiez votre synthaxe.", _
-                                "AdZHosts Updater", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            If F_RemplacerHostLocal(mstrCheminHostsTemp, mstrCheminHostsLocale) Then
+                If boolTrouve Then
+                    ' On informe que la suppréssion a reussi.
+                    MessageBox.Show("Suppression reussi !", "AdZHosts Updater", MessageBoxButtons.OK, _
+                                    MessageBoxIcon.Information)
+                Else
+                    ' On informe que le domaine n'a pas été trouvé.
+                    MessageBox.Show("Domaine proposé non trouvé, vérifiez votre synthaxe.", _
+                                    "AdZHosts Updater", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End If
             End If
+
         Else
             ' On informe que la suppréssion a été intérrompu.
             MessageBox.Show("Vous n'avez pas saisi de nom de domaine !", "AdZHosts Updater", MessageBoxButtons.OK, _
