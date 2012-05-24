@@ -153,7 +153,7 @@ Partial Class aproposForm
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(171, 13)
         Me.Label6.TabIndex = 13
-        Me.Label6.Text = "Copyright (c) 2011 Stechele Julien."
+        Me.Label6.Text = "Copyright (c) 2012 Stechele Julien."
         '
         'aproposForm
         '
@@ -178,7 +178,7 @@ Partial Class aproposForm
         Me.MinimizeBox = False
         Me.Name = "aproposForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "AdZHosts Updater v0.1 "
+        Me.Text = "AdZHosts Updater v1.1 "
         CType(Me.adzPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()

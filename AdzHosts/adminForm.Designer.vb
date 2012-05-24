@@ -23,13 +23,13 @@ Partial Class adminForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(adminForm))
-        Me.AjoutUtilisateurButton = New System.Windows.Forms.Button
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.AjoutUtilisateurTextBox = New System.Windows.Forms.TextBox
-        Me.AjoutMdpTextBox = New System.Windows.Forms.TextBox
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.ExisteDejaLabel = New System.Windows.Forms.Label
-        Me.ChampLabel = New System.Windows.Forms.Label
+        Me.AjoutUtilisateurButton = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.AjoutUtilisateurTextBox = New System.Windows.Forms.TextBox()
+        Me.AjoutMdpTextBox = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.ExisteDejaLabel = New System.Windows.Forms.Label()
+        Me.ChampLabel = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'AjoutUtilisateurButton
@@ -115,7 +115,7 @@ Partial Class adminForm
         Me.MinimizeBox = False
         Me.Name = "adminForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "AdZHosts Updater v0.1"
+        Me.Text = "AdZHosts Updater v1.1"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

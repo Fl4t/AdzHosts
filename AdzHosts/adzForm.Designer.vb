@@ -23,22 +23,22 @@ Partial Class adzForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(adzForm))
-        Me.SyncButton = New System.Windows.Forms.Button
-        Me.QuitterButton = New System.Windows.Forms.Button
-        Me.LocalLabel = New System.Windows.Forms.Label
-        Me.NewLabel = New System.Windows.Forms.Label
-        Me.LocaleLabel = New System.Windows.Forms.Label
-        Me.ServeurLabel = New System.Windows.Forms.Label
-        Me.MenuStrip = New System.Windows.Forms.MenuStrip
-        Me.MenuToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.MiseAZeroToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator
-        Me.QuitterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.EditionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.AjoutDeDomainesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.SuppressionDeDomainesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.AideToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.AProposToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.SyncButton = New System.Windows.Forms.Button()
+        Me.QuitterButton = New System.Windows.Forms.Button()
+        Me.LocalLabel = New System.Windows.Forms.Label()
+        Me.NewLabel = New System.Windows.Forms.Label()
+        Me.LocaleLabel = New System.Windows.Forms.Label()
+        Me.ServeurLabel = New System.Windows.Forms.Label()
+        Me.MenuStrip = New System.Windows.Forms.MenuStrip()
+        Me.MenuToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MiseAZeroToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.QuitterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EditionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AjoutDeDomainesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SuppressionDeDomainesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AideToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AProposToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -114,47 +114,47 @@ Partial Class adzForm
         '
         Me.MenuToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MiseAZeroToolStripMenuItem, Me.ToolStripSeparator1, Me.QuitterToolStripMenuItem})
         Me.MenuToolStripMenuItem.Name = "MenuToolStripMenuItem"
-        Me.MenuToolStripMenuItem.Size = New System.Drawing.Size(50, 20)
+        Me.MenuToolStripMenuItem.Size = New System.Drawing.Size(45, 20)
         Me.MenuToolStripMenuItem.Text = "M&enu"
         '
         'MiseAZeroToolStripMenuItem
         '
         Me.MiseAZeroToolStripMenuItem.Name = "MiseAZeroToolStripMenuItem"
         Me.MiseAZeroToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.M), System.Windows.Forms.Keys)
-        Me.MiseAZeroToolStripMenuItem.Size = New System.Drawing.Size(262, 22)
+        Me.MiseAZeroToolStripMenuItem.Size = New System.Drawing.Size(244, 22)
         Me.MiseAZeroToolStripMenuItem.Text = "Mise à &zéro du fichier hosts"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(259, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(241, 6)
         '
         'QuitterToolStripMenuItem
         '
         Me.QuitterToolStripMenuItem.Name = "QuitterToolStripMenuItem"
         Me.QuitterToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Q), System.Windows.Forms.Keys)
-        Me.QuitterToolStripMenuItem.Size = New System.Drawing.Size(262, 22)
+        Me.QuitterToolStripMenuItem.Size = New System.Drawing.Size(244, 22)
         Me.QuitterToolStripMenuItem.Text = "&Quitter"
         '
         'EditionToolStripMenuItem
         '
         Me.EditionToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AjoutDeDomainesToolStripMenuItem, Me.SuppressionDeDomainesToolStripMenuItem})
         Me.EditionToolStripMenuItem.Name = "EditionToolStripMenuItem"
-        Me.EditionToolStripMenuItem.Size = New System.Drawing.Size(56, 20)
+        Me.EditionToolStripMenuItem.Size = New System.Drawing.Size(51, 20)
         Me.EditionToolStripMenuItem.Text = "E&dition"
         '
         'AjoutDeDomainesToolStripMenuItem
         '
         Me.AjoutDeDomainesToolStripMenuItem.Name = "AjoutDeDomainesToolStripMenuItem"
         Me.AjoutDeDomainesToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.A), System.Windows.Forms.Keys)
-        Me.AjoutDeDomainesToolStripMenuItem.Size = New System.Drawing.Size(254, 22)
+        Me.AjoutDeDomainesToolStripMenuItem.Size = New System.Drawing.Size(238, 22)
         Me.AjoutDeDomainesToolStripMenuItem.Text = "&Ajouts de domaines"
         '
         'SuppressionDeDomainesToolStripMenuItem
         '
         Me.SuppressionDeDomainesToolStripMenuItem.Name = "SuppressionDeDomainesToolStripMenuItem"
         Me.SuppressionDeDomainesToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
-        Me.SuppressionDeDomainesToolStripMenuItem.Size = New System.Drawing.Size(254, 22)
+        Me.SuppressionDeDomainesToolStripMenuItem.Size = New System.Drawing.Size(238, 22)
         Me.SuppressionDeDomainesToolStripMenuItem.Text = "&Suppressions de domaines"
         '
         'AideToolStripMenuItem
@@ -167,7 +167,7 @@ Partial Class adzForm
         'AProposToolStripMenuItem
         '
         Me.AProposToolStripMenuItem.Name = "AProposToolStripMenuItem"
-        Me.AProposToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
+        Me.AProposToolStripMenuItem.Size = New System.Drawing.Size(129, 22)
         Me.AProposToolStripMenuItem.Text = "A propos..."
         '
         'adzForm
@@ -191,7 +191,7 @@ Partial Class adzForm
         Me.MinimizeBox = False
         Me.Name = "adzForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "AdZHosts Updater v0.1"
+        Me.Text = "AdZHosts Updater v1.1"
         Me.MenuStrip.ResumeLayout(False)
         Me.MenuStrip.PerformLayout()
         Me.ResumeLayout(False)
