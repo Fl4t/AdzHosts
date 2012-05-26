@@ -26,7 +26,7 @@
 	* **Mot de passe** : `admin`
 4. Créez un compte puis renseignez-le pour démarrer l'application.
 
-## Problèmes rencontrées
+## Problèmes rencontrés
 
 Veuillez présenter vos problèmes et copier-coller vos éventuels rapports d'erreurs dans la section [issues](https://github.com/Fl4t/AdzHosts/issues) de GitHub.
 
