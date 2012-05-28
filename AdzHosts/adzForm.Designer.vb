@@ -191,7 +191,7 @@ Partial Class adzForm
         Me.MinimizeBox = False
         Me.Name = "adzForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "AdZHosts Updater v1.11"
+        Me.Text = "AdZHosts Updater v1.12"
         Me.MenuStrip.ResumeLayout(False)
         Me.MenuStrip.PerformLayout()
         Me.ResumeLayout(False)
