@@ -29,7 +29,6 @@ Partial Class aproposForm
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.ForumLinkLabel = New System.Windows.Forms.LinkLabel()
@@ -52,7 +51,7 @@ Partial Class aproposForm
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(12, 110)
+        Me.Label1.Location = New System.Drawing.Point(12, 120)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(125, 13)
         Me.Label1.TabIndex = 1
@@ -62,7 +61,7 @@ Partial Class aproposForm
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(12, 136)
+        Me.Label2.Location = New System.Drawing.Point(12, 146)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(120, 13)
         Me.Label2.TabIndex = 2
@@ -71,7 +70,7 @@ Partial Class aproposForm
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(143, 110)
+        Me.Label3.Location = New System.Drawing.Point(143, 120)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(79, 13)
         Me.Label3.TabIndex = 3
@@ -80,7 +79,7 @@ Partial Class aproposForm
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(143, 136)
+        Me.Label4.Location = New System.Drawing.Point(143, 146)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(72, 13)
         Me.Label4.TabIndex = 4
@@ -90,34 +89,25 @@ Partial Class aproposForm
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(12, 162)
+        Me.Label5.Location = New System.Drawing.Point(12, 172)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(108, 13)
         Me.Label5.TabIndex = 5
         Me.Label5.Text = "Forum AdZHosts :"
         '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(12, 263)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(262, 13)
-        Me.Label7.TabIndex = 7
-        Me.Label7.Text = "Ce logiciel est gratuit. A utiliser à vos risques et périls ;)"
-        '
         'Label9
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(12, 188)
+        Me.Label9.Location = New System.Drawing.Point(12, 198)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(96, 13)
+        Me.Label9.Size = New System.Drawing.Size(98, 13)
         Me.Label9.TabIndex = 8
-        Me.Label9.Text = "Site AdZHosts :"
+        Me.Label9.Text = "Page Officielle :"
         '
         'Label10
         '
-        Me.Label10.Location = New System.Drawing.Point(12, 12)
+        Me.Label10.Location = New System.Drawing.Point(12, 22)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(288, 55)
         Me.Label10.TabIndex = 10
@@ -129,7 +119,7 @@ Partial Class aproposForm
         'ForumLinkLabel
         '
         Me.ForumLinkLabel.AutoSize = True
-        Me.ForumLinkLabel.Location = New System.Drawing.Point(143, 162)
+        Me.ForumLinkLabel.Location = New System.Drawing.Point(143, 172)
         Me.ForumLinkLabel.Name = "ForumLinkLabel"
         Me.ForumLinkLabel.Size = New System.Drawing.Size(146, 13)
         Me.ForumLinkLabel.TabIndex = 11
@@ -139,17 +129,17 @@ Partial Class aproposForm
         'SiteLinkLabel
         '
         Me.SiteLinkLabel.AutoSize = True
-        Me.SiteLinkLabel.Location = New System.Drawing.Point(143, 188)
+        Me.SiteLinkLabel.Location = New System.Drawing.Point(143, 198)
         Me.SiteLinkLabel.Name = "SiteLinkLabel"
-        Me.SiteLinkLabel.Size = New System.Drawing.Size(89, 13)
+        Me.SiteLinkLabel.Size = New System.Drawing.Size(158, 13)
         Me.SiteLinkLabel.TabIndex = 12
         Me.SiteLinkLabel.TabStop = True
-        Me.SiteLinkLabel.Text = "http://adzhosts.fr"
+        Me.SiteLinkLabel.Text = "http://facebook.com/AdZHosts"
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(12, 241)
+        Me.Label6.Location = New System.Drawing.Point(12, 275)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(171, 13)
         Me.Label6.TabIndex = 13
@@ -165,7 +155,6 @@ Partial Class aproposForm
         Me.Controls.Add(Me.ForumLinkLabel)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.Label9)
-        Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
@@ -190,7 +179,6 @@ Partial Class aproposForm
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents ForumLinkLabel As System.Windows.Forms.LinkLabel

@@ -11,7 +11,7 @@
                                           ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) _
                                     Handles SiteLinkLabel.LinkClicked
         ' Lance le navigateur par défaut vers le site.
-        System.Diagnostics.Process.Start("http://adzhosts.fr")
+        System.Diagnostics.Process.Start("http://facebook.com/AdZHosts")
     End Sub
 
 End Class
