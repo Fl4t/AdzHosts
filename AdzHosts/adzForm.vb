@@ -487,7 +487,9 @@ Public Class adzForm
     Private Sub QuitterButton_Click(ByVal sender As System.Object,
                                     ByVal e As System.EventArgs) _
                                     Handles QuitterButton.Click, QuitterToolStripMenuItem.Click
+
         Me.Close()
+
     End Sub
 
     Private Sub AProposToolStripMenuItem_Click(ByVal sender As System.Object,

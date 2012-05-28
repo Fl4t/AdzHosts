@@ -32,6 +32,22 @@
 
     End Sub
 
+    Private Sub AjoutMdpTextBox_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) _
+        Handles AjoutMdpTextBox.GotFocus
+
+        ' On sélectionne tout
+        AjoutMdpTextBox.SelectAll()
+
+    End Sub
+
+    Private Sub AjoutUtilisateurTextBox_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) _
+        Handles AjoutUtilisateurTextBox.GotFocus
+
+        ' On sélectionne tout
+        AjoutUtilisateurTextBox.SelectAll()
+
+    End Sub
+
     Private Sub AjoutUtilisateurTextBox_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) _
                                                     Handles AjoutUtilisateurTextBox.TextChanged, _
                                                     AjoutMdpTextBox.TextChanged

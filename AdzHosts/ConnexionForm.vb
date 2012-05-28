@@ -5,7 +5,6 @@
         ' Si l'utilisateur est administrateur, on passe au formulaire adminForm.
         If LoginTextBox.Text = "admin" Then
             If MdpTextBox.Text = "admin" Then
-                'Me.Hide()
                 Dim objadminForm As New adminForm
                 objadminForm.ShowDialog()
             Else
@@ -26,6 +25,7 @@
                     Dim objadzForm As New adzForm
                     objadzForm.ShowDialog()
                     FileClose(1)
+                    Me.Close()
                 Else
                     ErreurMdpLabel.Visible = True
                     MdpTextBox.SelectAll()
@@ -46,6 +46,21 @@
         LoginTextBox.Focus()
     End Sub
 
+    Private Sub LoginTextBox_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) _
+        Handles LoginTextBox.GotFocus
+
+        ' On sélectionne tout
+        LoginTextBox.SelectAll()
+
+    End Sub
+
+    Private Sub MdpTextBox_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) _
+        Handles MdpTextBox.GotFocus
+
+        ' On sélectionne tout
+        MdpTextBox.SelectAll()
+
+    End Sub
     Private Sub LoginTextBox_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) _
     Handles LoginTextBox.TextChanged, MdpTextBox.TextChanged
 

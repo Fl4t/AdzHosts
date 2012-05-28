@@ -167,8 +167,8 @@ Partial Class adzForm
         'AProposToolStripMenuItem
         '
         Me.AProposToolStripMenuItem.Name = "AProposToolStripMenuItem"
-        Me.AProposToolStripMenuItem.Size = New System.Drawing.Size(129, 22)
-        Me.AProposToolStripMenuItem.Text = "A propos..."
+        Me.AProposToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AProposToolStripMenuItem.Text = "À propos..."
         '
         'adzForm
         '
