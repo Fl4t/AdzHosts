@@ -1,4 +1,4 @@
-﻿' Copyright (c) 2011 Stechele Julien
+﻿' Copyright (c) 2012 Stechele Julien
 ' All rights reserved.
 
 ' Redistribution and use in source and binary forms, with or without modification, are permitted provided 
@@ -240,8 +240,8 @@ Public Class adzForm
                                     vp_strLigneEnCours.StartsWith("255.255.255.255") Or _
                                      vp_strLigneEnCours.StartsWith("#") Then
                 vp_objFichierHostsServeurPur.WriteLine(vp_strLigneEnCours)
-            Else
-                ' On ajoute le reste au tableau.
+            ElseIf vp_strLigneEnCours.Trim <> "" Then
+                ' On ajoute le reste au tableau si c'est pas une ligne vide.
                 ReDim Preserve vp_strLignesExclus(vp_intLongueur)
                 vp_strLignesExclus(vp_intIndice) = vp_strLigneEnCours
                 vp_intIndice += 1
