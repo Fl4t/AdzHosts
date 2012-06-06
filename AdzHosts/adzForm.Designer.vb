@@ -39,6 +39,9 @@ Partial Class adzForm
         Me.SuppressionDeDomainesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AideToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AProposToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DLBackgroundWorker = New System.ComponentModel.BackgroundWorker()
+        Me.DLProgressBar = New System.Windows.Forms.ProgressBar()
+        Me.DLLabel = New System.Windows.Forms.Label()
         Me.MenuStrip.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -63,7 +66,7 @@ Partial Class adzForm
         'LocalLabel
         '
         Me.LocalLabel.AutoSize = True
-        Me.LocalLabel.Location = New System.Drawing.Point(68, 107)
+        Me.LocalLabel.Location = New System.Drawing.Point(68, 81)
         Me.LocalLabel.Margin = New System.Windows.Forms.Padding(1, 0, 1, 0)
         Me.LocalLabel.Name = "LocalLabel"
         Me.LocalLabel.Size = New System.Drawing.Size(79, 13)
@@ -73,7 +76,7 @@ Partial Class adzForm
         'NewLabel
         '
         Me.NewLabel.AutoSize = True
-        Me.NewLabel.Location = New System.Drawing.Point(61, 142)
+        Me.NewLabel.Location = New System.Drawing.Point(61, 116)
         Me.NewLabel.Margin = New System.Windows.Forms.Padding(1, 0, 1, 0)
         Me.NewLabel.Name = "NewLabel"
         Me.NewLabel.Size = New System.Drawing.Size(86, 13)
@@ -84,7 +87,7 @@ Partial Class adzForm
         '
         Me.LocaleLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.LocaleLabel.ForeColor = System.Drawing.Color.Black
-        Me.LocaleLabel.Location = New System.Drawing.Point(151, 103)
+        Me.LocaleLabel.Location = New System.Drawing.Point(151, 77)
         Me.LocaleLabel.Name = "LocaleLabel"
         Me.LocaleLabel.Size = New System.Drawing.Size(71, 21)
         Me.LocaleLabel.TabIndex = 4
@@ -93,7 +96,7 @@ Partial Class adzForm
         'ServeurLabel
         '
         Me.ServeurLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.ServeurLabel.Location = New System.Drawing.Point(151, 137)
+        Me.ServeurLabel.Location = New System.Drawing.Point(151, 111)
         Me.ServeurLabel.Name = "ServeurLabel"
         Me.ServeurLabel.Size = New System.Drawing.Size(71, 22)
         Me.ServeurLabel.TabIndex = 5
@@ -167,8 +170,30 @@ Partial Class adzForm
         'AProposToolStripMenuItem
         '
         Me.AProposToolStripMenuItem.Name = "AProposToolStripMenuItem"
-        Me.AProposToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AProposToolStripMenuItem.Size = New System.Drawing.Size(129, 22)
         Me.AProposToolStripMenuItem.Text = "À propos..."
+        '
+        'DLBackgroundWorker
+        '
+        Me.DLBackgroundWorker.WorkerReportsProgress = True
+        Me.DLBackgroundWorker.WorkerSupportsCancellation = True
+        '
+        'DLProgressBar
+        '
+        Me.DLProgressBar.Location = New System.Drawing.Point(92, 174)
+        Me.DLProgressBar.Name = "DLProgressBar"
+        Me.DLProgressBar.Size = New System.Drawing.Size(100, 11)
+        Me.DLProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee
+        Me.DLProgressBar.TabIndex = 7
+        '
+        'DLLabel
+        '
+        Me.DLLabel.AutoSize = True
+        Me.DLLabel.Location = New System.Drawing.Point(96, 158)
+        Me.DLLabel.Name = "DLLabel"
+        Me.DLLabel.Size = New System.Drawing.Size(93, 13)
+        Me.DLLabel.TabIndex = 8
+        Me.DLLabel.Text = "Téléchargement..."
         '
         'adzForm
         '
@@ -176,6 +201,8 @@ Partial Class adzForm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(284, 262)
+        Me.Controls.Add(Me.DLLabel)
+        Me.Controls.Add(Me.DLProgressBar)
         Me.Controls.Add(Me.ServeurLabel)
         Me.Controls.Add(Me.LocaleLabel)
         Me.Controls.Add(Me.NewLabel)
@@ -214,5 +241,8 @@ Partial Class adzForm
     Friend WithEvents SuppressionDeDomainesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AideToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AProposToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents DLBackgroundWorker As System.ComponentModel.BackgroundWorker
+    Friend WithEvents DLProgressBar As System.Windows.Forms.ProgressBar
+    Friend WithEvents DLLabel As System.Windows.Forms.Label
 
 End Class

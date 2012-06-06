@@ -47,38 +47,65 @@ Public Class adzForm
     Private Sub adzForm_Load(ByVal sender As System.Object,
                              ByVal e As System.EventArgs) _
                              Handles MyBase.Load
-        ' Au démarrage de l'application, on télécharge le fichier hosts à l'endroit où
-        ' est l'executif.
 
-        ' Essai du téléchargement, on ne sait jamais ce qui peut arriver.
-        Try
-            My.Computer.Network.DownloadFile("http://kosvocore.free.fr/AdZHosts/HOSTS", _
-                                             mstrCheminHostsServeur, "", "", True, 10, True)
-            ' Création du répertoire de sauvegardes.
-            If System.IO.Directory.Exists(mstrCheminSauvegardes) = False Then
-                System.IO.Directory.CreateDirectory(mstrCheminSauvegardes)
-            End If
-            ' On sauvegarde le fichier locale.
-            Call P_SauvegardeHostsLocale()
-            ' On analyse la version serveur.
-            Call P_AnalyseDeVersion(mstrCheminHostsServeur)
-            ' On analyse la version locale.
-            Call P_AnalyseDeVersion(mstrCheminHostsLocale)
+        DLProgressBar.Visible = True
+        DLBackgroundWorker.RunWorkerAsync()
 
-            ' On affiche les versions.
-            Call P_AffichageDesVersions()
-        Catch ex As Exception
-            ' Si problème, on informe puis on bloque l'application.
-            MessageBox.Show("Problème lors du téléchargement, vérifiez que votre connexion " & _
-                            "internet fonctionne et assurez-vous que le fichier hosts est " & _
-                            "distribué à l'adresse suivante : http://kosvocore.free.fr/AdZHosts/HOSTS ", _
-                            "AdZHosts Updater", MessageBoxButtons.OK, _
-                            MessageBoxIcon.Information)
-            SyncButton.Enabled = False
-            MiseAZeroToolStripMenuItem.Enabled = False
-            AjoutDeDomainesToolStripMenuItem.Enabled = False
-            SuppressionDeDomainesToolStripMenuItem.Enabled = False
-        End Try
+        SyncButton.Enabled = False
+        MiseAZeroToolStripMenuItem.Enabled = False
+        AjoutDeDomainesToolStripMenuItem.Enabled = False
+        SuppressionDeDomainesToolStripMenuItem.Enabled = False
+
+    End Sub
+
+    Private Sub DLBackgroundWorker_DoWork(ByVal sender As System.Object, _
+                                          ByVal e As System.ComponentModel.DoWorkEventArgs) _
+                                          Handles DLBackgroundWorker.DoWork
+
+        If My.Computer.Network.Ping("kosvocore.free.fr") Then
+            Try
+                My.Computer.Network.DownloadFile("http://kosvocore.free.fr/AdZHosts/HOSTS", _
+                                                 mstrCheminHostsServeur)
+            Catch ex As Exception
+                MessageBox.Show("Problème lors du téléchargement, vérifiez que votre connexion " & _
+                                "internet fonctionne et assurez-vous que le fichier hosts est " & _
+                                "distribué à l'adresse suivante : http://kosvocore.free.fr/AdZHosts/HOSTS ", _
+                                "AdZHosts Updater", MessageBoxButtons.OK, _
+                                MessageBoxIcon.Information)
+            End Try
+        End If
+
+    End Sub
+
+    Private Sub DLBackgroundWorker_RunWorkerCompleted(ByVal sender As Object, _
+                                                ByVal e As System.ComponentModel.RunWorkerCompletedEventArgs) _
+                                                Handles DLBackgroundWorker.RunWorkerCompleted
+        DLProgressBar.Visible = False
+        DLLabel.Visible = False
+        Call afterDownLoad()
+
+    End Sub
+
+    Private Sub afterDownLoad()
+
+        ' Création du répertoire de sauvegardes.
+        If System.IO.Directory.Exists(mstrCheminSauvegardes) = False Then
+            System.IO.Directory.CreateDirectory(mstrCheminSauvegardes)
+        End If
+        ' On sauvegarde le fichier locale.
+        Call P_SauvegardeHostsLocale()
+        ' On analyse la version serveur.
+        Call P_AnalyseDeVersion(mstrCheminHostsServeur)
+        ' On analyse la version locale.
+        Call P_AnalyseDeVersion(mstrCheminHostsLocale)
+
+        ' On affiche les versions.
+        Call P_AffichageDesVersions()
+        SyncButton.Enabled = True
+        MiseAZeroToolStripMenuItem.Enabled = True
+        AjoutDeDomainesToolStripMenuItem.Enabled = True
+        SuppressionDeDomainesToolStripMenuItem.Enabled = True
+
     End Sub
 
     Private Sub P_SauvegardeHostsLocale()
