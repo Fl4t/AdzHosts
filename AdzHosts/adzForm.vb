@@ -332,7 +332,7 @@ Public Class adzForm
                                                  Handles MiseAZeroToolStripMenuItem.Click
         ' On demande une confirmation.
         Dim dlgReponse As DialogResult
-        dlgReponse = MessageBox.Show("Etes-vous sur de vouloir remettre à zero le fichier hosts ?", _
+        dlgReponse = MessageBox.Show("Etes-vous sur de vouloir remettre à zéro le fichier hosts ?", _
                                        "AdZHosts Updater", MessageBoxButtons.YesNo, MessageBoxIcon.Question, _
                                        MessageBoxDefaultButton.Button2)
         If dlgReponse = Windows.Forms.DialogResult.Yes Then
