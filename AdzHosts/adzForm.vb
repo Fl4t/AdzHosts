@@ -217,6 +217,7 @@ Public Class adzForm
         Dim retour As Boolean = False
         Try
             System.IO.File.Copy(pf_strCheminHostsNouveau, pf_strCheminHostsAncien, True)
+            System.IO.File.Delete(pf_strCheminHostsNouveau)
             retour = True
         Catch ex As UnauthorizedAccessException
             MessageBox.Show("Vous n'avez pas les autorisations nécessaires pour modifier le " _
@@ -269,7 +270,6 @@ Public Class adzForm
             objFichierHostsDefaut.Close()
             Call P_EnleverLectureSeule()
             If F_RemplacerHostLocal(strCheminHostsDefaut, mstrCheminHostsLocale) Then
-                System.IO.File.Delete(strCheminHostsDefaut)
                 MessageBox.Show("Mise à zéro éffectuée !", "AdZHosts Updater", MessageBoxButtons.OK,
                                 MessageBoxIcon.Information)
                 Call P_AnalyseDeVersion(mstrCheminHostsLocale)
@@ -343,17 +343,6 @@ Public Class adzForm
             MessageBox.Show("Vous n'avez pas saisi de nom de domaine !", "AdZHosts Updater", MessageBoxButtons.OK,
                             MessageBoxIcon.Information)
         End If
-    End Sub
-
-    Private Sub adzForm_FormClosing(ByVal sender As Object,
-                                    ByVal e As System.Windows.Forms.FormClosingEventArgs) _
-                                    Handles Me.FormClosing
-        Try
-            System.IO.File.Delete(mstrCheminHostsPur)
-            System.IO.File.Delete(mstrCheminHostsTemp)
-            System.IO.File.Delete(mstrCheminHostsServeur)
-        Catch ex As Exception
-        End Try
     End Sub
 
     Private Sub QuitterButton_Click(ByVal sender As System.Object,
