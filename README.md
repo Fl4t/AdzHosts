@@ -20,11 +20,7 @@
 ## Installation
 
 1. *Téléchargez* l'archive contenant les fichiers nécéssaires à l'installation dans la partie [downloads](https://github.com/Fl4t/AdzHosts/downloads) ;
-2. *Dezippez* l'archive puis lancez l'executif `setup.exe` en mode **administrateur** ;
-3. *Identifiez-vous* à l'aide de l'utilisateur par defaut :
-	* **Utilisateur** : `admin`
-	* **Mot de passe** : `admin`
-4. Créez un compte puis renseignez-le pour démarrer l'application.
+2. *Dezippez* l'archive puis lancez l'executif `setup.exe`
 
 ## Problèmes rencontrés
 
