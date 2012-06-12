@@ -7,11 +7,11 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{EA408FFE-56FA-4637-92AE-14D0C1FC9124}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>AdZHosts.ModuleApp</StartupObject>
+    <StartupObject>AdZHosts.My.MyApplication</StartupObject>
     <RootNamespace>AdZHosts</RootNamespace>
-    <AssemblyName>AdZHosts Updater</AssemblyName>
+    <AssemblyName>AdZHosts Updater v1.2</AssemblyName>
     <FileAlignment>512</FileAlignment>
-    <MyType>WindowsFormsWithCustomSubMain</MyType>
+    <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <OptionExplicit>On</OptionExplicit>
     <OptionCompare>Binary</OptionCompare>
@@ -35,7 +35,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -47,7 +47,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>AdZHosts Updater.xml</DocumentationFile>
+    <DocumentationFile>AdZHosts Updater v1.2.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -56,7 +56,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>AdZHosts Updater.xml</DocumentationFile>
+    <DocumentationFile>AdZHosts Updater v1.2.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -102,12 +102,6 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="adminForm.Designer.vb">
-      <DependentUpon>adminForm.vb</DependentUpon>
-    </Compile>
-    <Compile Include="adminForm.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="adzForm.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -121,13 +115,6 @@
     <Compile Include="aproposForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ConnexionForm.Designer.vb">
-      <DependentUpon>ConnexionForm.vb</DependentUpon>
-    </Compile>
-    <Compile Include="ConnexionForm.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ModuleApp.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -145,20 +132,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="adminForm.resx">
-      <DependentUpon>adminForm.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="adzForm.resx">
       <DependentUpon>adzForm.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="aproposForm.resx">
       <DependentUpon>aproposForm.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ConnexionForm.resx">
-      <DependentUpon>ConnexionForm.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
