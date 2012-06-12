@@ -47,6 +47,7 @@ Partial Class adzForm
         '
         'SyncButton
         '
+        Me.SyncButton.Enabled = False
         Me.SyncButton.Location = New System.Drawing.Point(34, 210)
         Me.SyncButton.Name = "SyncButton"
         Me.SyncButton.Size = New System.Drawing.Size(91, 23)
@@ -122,6 +123,7 @@ Partial Class adzForm
         '
         'MiseAZeroToolStripMenuItem
         '
+        Me.MiseAZeroToolStripMenuItem.Enabled = False
         Me.MiseAZeroToolStripMenuItem.Name = "MiseAZeroToolStripMenuItem"
         Me.MiseAZeroToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.M), System.Windows.Forms.Keys)
         Me.MiseAZeroToolStripMenuItem.Size = New System.Drawing.Size(244, 22)
@@ -148,6 +150,7 @@ Partial Class adzForm
         '
         'AjoutDeDomainesToolStripMenuItem
         '
+        Me.AjoutDeDomainesToolStripMenuItem.Enabled = False
         Me.AjoutDeDomainesToolStripMenuItem.Name = "AjoutDeDomainesToolStripMenuItem"
         Me.AjoutDeDomainesToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.A), System.Windows.Forms.Keys)
         Me.AjoutDeDomainesToolStripMenuItem.Size = New System.Drawing.Size(238, 22)
@@ -155,6 +158,7 @@ Partial Class adzForm
         '
         'SuppressionDeDomainesToolStripMenuItem
         '
+        Me.SuppressionDeDomainesToolStripMenuItem.Enabled = False
         Me.SuppressionDeDomainesToolStripMenuItem.Name = "SuppressionDeDomainesToolStripMenuItem"
         Me.SuppressionDeDomainesToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
         Me.SuppressionDeDomainesToolStripMenuItem.Size = New System.Drawing.Size(238, 22)

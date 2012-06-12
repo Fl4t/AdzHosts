@@ -1,4 +1,4 @@
-﻿' Copyright (c) 2012 Stechele Julien
+﻿  ' Copyright (c) 2012 Stechele Julien
 ' All rights reserved.
 
 ' Redistribution and use in source and binary forms, with or without modification, are permitted provided 
@@ -44,13 +44,7 @@ Public Class adzForm
     Private Sub adzForm_Load(ByVal sender As System.Object,
                              ByVal e As System.EventArgs) _
                              Handles MyBase.Load
-        DLProgressBar.Visible = True
         DLBackgroundWorker.RunWorkerAsync()
-        SyncButton.Enabled = False
-        MiseAZeroToolStripMenuItem.Enabled = False
-        AjoutDeDomainesToolStripMenuItem.Enabled = False
-        SuppressionDeDomainesToolStripMenuItem.Enabled = False
-
     End Sub
 
     Private Sub DLBackgroundWorker_DoWork(ByVal sender As System.Object,
