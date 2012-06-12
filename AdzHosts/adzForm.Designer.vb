@@ -175,7 +175,6 @@ Partial Class adzForm
         '
         'DLBackgroundWorker
         '
-        Me.DLBackgroundWorker.WorkerReportsProgress = True
         Me.DLBackgroundWorker.WorkerSupportsCancellation = True
         '
         'DLProgressBar
