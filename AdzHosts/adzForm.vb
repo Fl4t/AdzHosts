@@ -148,24 +148,17 @@ Public Class adzForm
     Private Function F_VerifierVersion(ByRef pf_objFichierHosts As System.IO.StreamReader) As String
         Dim vf_strVersion As String
         Dim vf_strLigneEnCours As String = ""
-        ' Une erreur si le fichier fait moins de 2 lignes, donc on test avant.
-        Try
-            For intLigne = 1 To 2
-                vf_strLigneEnCours = pf_objFichierHosts.ReadLine()
-            Next
-            ' On recherche le caractère "v" dans la ligne.
-            Dim intPosition As Integer = vf_strLigneEnCours.IndexOf("v")
-
-            ' Si le caractère "v" est trouvé sur la ligne en cours, on extrait les quatres caractères.
-            If intPosition <> -1 Then
-                vf_strVersion = vf_strLigneEnCours.Substring(intPosition + 1, 4)
-            Else
-                vf_strVersion = "Inconnu"
-            End If
-        Catch ex As Exception
-            MessageBox.Show(ex.ToString)
+        For intLigne = 1 To 2
+            vf_strLigneEnCours = pf_objFichierHosts.ReadLine()
+        Next
+        ' On recherche le caractère "v" dans la ligne.
+        Dim intPosition As Integer = vf_strLigneEnCours.IndexOf("v")
+        ' Si le caractère "v" est trouvé sur la ligne en cours, on extrait les quatres caractères.
+        If intPosition <> -1 Then
+            vf_strVersion = vf_strLigneEnCours.Substring(intPosition + 1, 4)
+        Else
             vf_strVersion = "Inconnu"
-        End Try
+        End If
         Return vf_strVersion
     End Function
 
