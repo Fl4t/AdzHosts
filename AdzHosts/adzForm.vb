@@ -75,10 +75,6 @@ Public Class adzForm
         DLLabel.Visible = False
         If Not (e.Error Is Nothing) Then
             MessageBox.Show(e.Error.Message)
-        ElseIf e.Cancelled Then
-            MessageBox.Show("Téléchargement annulé.", "AdZHosts Updater",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information)
         Else
             Call P_AnalyseDeVersion(mstrCheminHostsServeur)
             Call P_AnalyseDeVersion(mstrCheminHostsLocale)
@@ -352,9 +348,6 @@ Public Class adzForm
     Private Sub adzForm_FormClosing(ByVal sender As Object,
                                     ByVal e As System.Windows.Forms.FormClosingEventArgs) _
                                     Handles Me.FormClosing
-        If DLBackgroundWorker.IsBusy Then
-            DLBackgroundWorker.CancelAsync()
-        End If
         Try
             System.IO.File.Delete(mstrCheminHostsPur)
             System.IO.File.Delete(mstrCheminHostsTemp)
