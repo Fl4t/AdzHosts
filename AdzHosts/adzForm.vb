@@ -89,13 +89,15 @@ Public Class adzForm
         If Not (e.Error Is Nothing) Then
             MessageBox.Show(e.Error.Message)
         Else
-            Call P_AnalyseDeVersion(mstrCheminHostsServeur)
-            Call P_AnalyseDeVersion(mstrCheminHostsLocale)
-            Call P_AffichageDesVersions()
-            SyncButton.Enabled = True
-            MiseAZeroToolStripMenuItem.Enabled = True
-            AjoutDeDomainesToolStripMenuItem.Enabled = True
-            SuppressionDeDomainesToolStripMenuItem.Enabled = True
+            If System.IO.File.Exists(mstrCheminHostsServeur) Then
+                Call P_AnalyseDeVersion(mstrCheminHostsServeur)
+                Call P_AnalyseDeVersion(mstrCheminHostsLocale)
+                Call P_AffichageDesVersions()
+                SyncButton.Enabled = True
+                MiseAZeroToolStripMenuItem.Enabled = True
+                AjoutDeDomainesToolStripMenuItem.Enabled = True
+                SuppressionDeDomainesToolStripMenuItem.Enabled = True
+            End If
         End If
     End Sub
 
