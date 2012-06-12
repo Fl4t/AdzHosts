@@ -1,4 +1,4 @@
-﻿  ' Copyright (c) 2012 Stechele Julien
+﻿' Copyright (c) 2012 Stechele Julien
 ' All rights reserved.
 
 ' Redistribution and use in source and binary forms, with or without modification, are permitted provided 
@@ -115,7 +115,7 @@ Public Class adzForm
             Else
                 MessageBox.Show("Fichier non trouvé dans l'emplacement " & mstrCheminHostsLocale & ".",
                                             "AdZHosts Updater", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                mstrVersionLocale = "Aucun"
+                mstrVersionLocale = "Aucune"
             End If
         End If
     End Sub
@@ -134,7 +134,7 @@ Public Class adzForm
         End Select
         LocaleLabel.Text = mstrVersionLocale
         ServeurLabel.Text = mstrVersionServeur
-        If mstrVersionServeur = "Inconnu" Then
+        If mstrVersionServeur = "Inconnue" Then
             MessageBox.Show("Le fichier ne contient pas la chaine '# AdZHosts...'," & _
                         " il est possible que le fichier soit corrompu ou que le mainteneur " & _
                         "est changer la norme de présentation." & vbNewLine & _
@@ -157,7 +157,7 @@ Public Class adzForm
         If intPosition <> -1 Then
             vf_strVersion = vf_strLigneEnCours.Substring(intPosition + 1, 4)
         Else
-            vf_strVersion = "Inconnu"
+            vf_strVersion = "Inconnue"
         End If
         Return vf_strVersion
     End Function
