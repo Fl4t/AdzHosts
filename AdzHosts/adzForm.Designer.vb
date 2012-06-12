@@ -179,20 +179,20 @@ Partial Class adzForm
         '
         'DLProgressBar
         '
-        Me.DLProgressBar.Location = New System.Drawing.Point(92, 174)
+        Me.DLProgressBar.Location = New System.Drawing.Point(78, 174)
         Me.DLProgressBar.Name = "DLProgressBar"
-        Me.DLProgressBar.Size = New System.Drawing.Size(100, 11)
+        Me.DLProgressBar.Size = New System.Drawing.Size(128, 11)
         Me.DLProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee
         Me.DLProgressBar.TabIndex = 7
         '
         'DLLabel
         '
         Me.DLLabel.AutoSize = True
-        Me.DLLabel.Location = New System.Drawing.Point(96, 158)
+        Me.DLLabel.Location = New System.Drawing.Point(94, 158)
         Me.DLLabel.Name = "DLLabel"
-        Me.DLLabel.Size = New System.Drawing.Size(93, 13)
+        Me.DLLabel.Size = New System.Drawing.Size(96, 13)
         Me.DLLabel.TabIndex = 8
-        Me.DLLabel.Text = "Téléchargement..."
+        Me.DLLabel.Text = "Veuillez patienter..."
         '
         'adzForm
         '
