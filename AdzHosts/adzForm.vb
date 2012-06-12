@@ -44,8 +44,27 @@ Public Class adzForm
     Private Sub adzForm_Load(ByVal sender As System.Object,
                              ByVal e As System.EventArgs) _
                              Handles MyBase.Load
-        DLBackgroundWorker.RunWorkerAsync()
+        If isWindowsAdministrator() Then
+            Call P_EnleverLectureSeule()
+            DLBackgroundWorker.RunWorkerAsync()
+        Else
+            MessageBox.Show("Vous n'avez pas les autorisations nécessaires pour modifier le " _
+                           & "fichier hosts de l'ordinateur. Assurez-vous d'avoir les accès " _
+                           & "administrateurs et d'avoir désactiver le service UAC de Windows.",
+                           "Accès refusé", MessageBoxButtons.OK, MessageBoxIcon.Error,
+                           MessageBoxDefaultButton.Button1)
+        End If
     End Sub
+
+    Public Function isWindowsAdministrator() As Boolean
+        My.User.InitializeWithWindowsUser()
+        If My.User.IsAuthenticated Then
+            If My.User.IsInRole(Microsoft.VisualBasic.ApplicationServices.BuiltInRole.Administrator) Then
+                Return True
+            End If
+        End If
+        Return False
+    End Function
 
     Private Sub DLBackgroundWorker_DoWork(ByVal sender As System.Object,
                                           ByVal e As System.ComponentModel.DoWorkEventArgs) _
@@ -88,7 +107,6 @@ Public Class adzForm
             vp_objFichierHosts.Close()
         Else
             If System.IO.File.Exists(pp_strCheminHosts) Then
-                Call P_EnleverLectureSeule()
                 vp_objFichierHosts = System.IO.File.OpenText(pp_strCheminHosts)
                 mstrVersionLocale = F_VerifierVersion(vp_objFichierHosts)
                 vp_objFichierHosts.Close()
@@ -206,22 +224,11 @@ Public Class adzForm
         End If
     End Sub
 
-    Private Function F_RemplacerHostLocal(ByRef pf_strCheminHostsNouveau As String, _
-                                     ByVal pf_strCheminHostsAncien As String) As Boolean
-        Dim retour As Boolean = False
-        Try
-            System.IO.File.Copy(pf_strCheminHostsNouveau, pf_strCheminHostsAncien, True)
-            System.IO.File.Delete(pf_strCheminHostsNouveau)
-            retour = True
-        Catch ex As UnauthorizedAccessException
-            MessageBox.Show("Vous n'avez pas les autorisations nécessaires pour modifier le " _
-                            & "fichier hosts de l'ordinateur. Assurez-vous d'avoir les accès " _
-                            & "administrateurs et d'avoir désactiver le service UAC de Windows.",
-                            "Accès refusé", MessageBoxButtons.OK, MessageBoxIcon.Error _
-                            , MessageBoxDefaultButton.Button1)
-        End Try
-        Return retour
-    End Function
+    Private Sub P_RemplacerHostLocal(ByRef pf_strCheminHostsNouveau As String, _
+                                     ByVal pf_strCheminHostsAncien As String)
+        System.IO.File.Copy(pf_strCheminHostsNouveau, pf_strCheminHostsAncien, True)
+        System.IO.File.Delete(pf_strCheminHostsNouveau)
+    End Sub
 
     Private Sub SyncButton_Click(ByVal sender As System.Object,
                                  ByVal e As System.EventArgs) _
@@ -232,12 +239,11 @@ Public Class adzForm
                                        MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button2)
         If dlgReponse = Windows.Forms.DialogResult.Yes Then
             Call P_Purification()
-            If F_RemplacerHostLocal(mstrCheminHostsPur, mstrCheminHostsLocale) Then
-                MessageBox.Show("Mise à jour réussie !", "AdZHosts Updater", MessageBoxButtons.OK,
-                            MessageBoxIcon.Information)
-                Call P_AnalyseDeVersion(mstrCheminHostsLocale)
-                Call P_AffichageDesVersions()
-            End If
+            Call P_RemplacerHostLocal(mstrCheminHostsPur, mstrCheminHostsLocale)
+            MessageBox.Show("Mise à jour réussie !", "AdZHosts Updater", MessageBoxButtons.OK,
+                        MessageBoxIcon.Information)
+            Call P_AnalyseDeVersion(mstrCheminHostsLocale)
+            Call P_AffichageDesVersions()
         Else
             MessageBox.Show("Mise à jour interrompue.", "AdZHosts Updater", MessageBoxButtons.OK,
                             MessageBoxIcon.Information)
@@ -262,13 +268,11 @@ Public Class adzForm
             objFichierHostsDefaut.WriteLine("127.0.0.1 localhost")
             ' On ferme le fichier
             objFichierHostsDefaut.Close()
-            Call P_EnleverLectureSeule()
-            If F_RemplacerHostLocal(strCheminHostsDefaut, mstrCheminHostsLocale) Then
-                MessageBox.Show("Mise à zéro éffectuée !", "AdZHosts Updater", MessageBoxButtons.OK,
-                                MessageBoxIcon.Information)
-                Call P_AnalyseDeVersion(mstrCheminHostsLocale)
-                Call P_AffichageDesVersions()
-            End If
+            Call P_RemplacerHostLocal(strCheminHostsDefaut, mstrCheminHostsLocale)
+            MessageBox.Show("Mise à zéro éffectuée !", "AdZHosts Updater", MessageBoxButtons.OK,
+                            MessageBoxIcon.Information)
+            Call P_AnalyseDeVersion(mstrCheminHostsLocale)
+            Call P_AffichageDesVersions()
         End If
     End Sub
 
@@ -324,14 +328,13 @@ Public Class adzForm
             End While
             objFichierHostsLocale.Close()
             objFichierHostsTemp.Close()
-            If F_RemplacerHostLocal(mstrCheminHostsTemp, mstrCheminHostsLocale) Then
-                If boolTrouve Then
-                    MessageBox.Show("Suppression reussi !", "AdZHosts Updater", MessageBoxButtons.OK,
-                                    MessageBoxIcon.Information)
-                Else
-                    MessageBox.Show("Domaine proposé non trouvé, vérifiez votre syntaxe.",
-                                    "AdZHosts Updater", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                End If
+            Call P_RemplacerHostLocal(mstrCheminHostsTemp, mstrCheminHostsLocale)
+            If boolTrouve Then
+                MessageBox.Show("Suppression reussi !", "AdZHosts Updater", MessageBoxButtons.OK,
+                                MessageBoxIcon.Information)
+            Else
+                MessageBox.Show("Domaine proposé non trouvé, vérifiez votre syntaxe.",
+                                "AdZHosts Updater", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
         Else
             MessageBox.Show("Vous n'avez pas saisi de nom de domaine !", "AdZHosts Updater", MessageBoxButtons.OK,
