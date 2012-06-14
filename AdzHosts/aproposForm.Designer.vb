@@ -167,7 +167,7 @@ Partial Class aproposForm
         Me.MinimizeBox = False
         Me.Name = "aproposForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "AdZHosts Updater v1.2"
+        Me.Text = "AdZHosts Updater v1.21"
         CType(Me.adzPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
