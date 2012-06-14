@@ -53,6 +53,7 @@ Public Class adzForm
                            & "administrateurs.",
                            "Accès refusé", MessageBoxButtons.OK, MessageBoxIcon.Error,
                            MessageBoxDefaultButton.Button1)
+            Me.Close()
         End If
     End Sub
 
