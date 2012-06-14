@@ -50,7 +50,7 @@ Public Class adzForm
         Else
             MessageBox.Show("Vous n'avez pas les autorisations nécessaires pour modifier le " _
                            & "fichier hosts de l'ordinateur. Assurez-vous d'avoir les accès " _
-                           & "administrateurs et d'avoir désactiver le service UAC de Windows.",
+                           & "administrateurs.",
                            "Accès refusé", MessageBoxButtons.OK, MessageBoxIcon.Error,
                            MessageBoxDefaultButton.Button1)
         End If
