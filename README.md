@@ -16,6 +16,7 @@
 
 * [Microsoft Windows 7 Toutes éditions](http://windows.microsoft.com/en-US/windows7/products/home)
 * [Microsoft .NET Framework 4](https://www.microsoft.com/en-us/download/details.aspx?id=17851)
+* [Être super-administrateur de votre PC](http://windows7tips.free.fr/dotclear/index.php?post/2011/04/Windows-7-%3A-activer-le-super-administrateur-(root))
 
 ## Installation
 
